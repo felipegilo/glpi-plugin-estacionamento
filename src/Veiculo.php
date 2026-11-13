@@ -2,14 +2,18 @@
 
 namespace GlpiPlugin\Estacionamento;
 
-use CommonDBTM;
 use Glpi\Application\View\TemplateRenderer;
+use GlpiPlugin\Estacionamento\Compat\BaseItem;
 use Session;
 
-class Veiculo extends CommonDBTM
+class Veiculo extends BaseItem
 {
-    public static $rightname = 'plugin_estacionamento';
-    public $dohistory        = true;
+    public function __construct()
+    {
+        parent::__construct();
+        // Historico de alteracoes (propriedade tipada no GLPI 12: por isso e atribuida aqui)
+        $this->dohistory = true;
+    }
 
     public static function getTypeName($nb = 0)
     {

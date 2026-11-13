@@ -5,9 +5,9 @@ use GlpiPlugin\Estacionamento\Profile as EstProfile;
 use GlpiPlugin\Estacionamento\Vaga;
 use GlpiPlugin\Estacionamento\Veiculo;
 
-define('PLUGIN_ESTACIONAMENTO_VERSION', '0.2.0');
+define('PLUGIN_ESTACIONAMENTO_VERSION', '0.2.1');
 define('PLUGIN_ESTACIONAMENTO_MIN_GLPI', '11.0.0');
-define('PLUGIN_ESTACIONAMENTO_MAX_GLPI', '11.0.99');
+define('PLUGIN_ESTACIONAMENTO_MAX_GLPI', '12.0.99');
 
 function plugin_init_estacionamento()
 {
