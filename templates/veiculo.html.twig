@@ -1,6 +1,10 @@
 {% extends "generic_show_form.html.twig" %}
 {% import 'components/form/fields_macros.html.twig' as fields %}
 
+{# O formulario generico do GLPI ja desenharia "Usuario" (mesmo nome de campo que "Proprietario" abaixo).
+   Ele e omitido aqui para nao aparecer repetido: vale so o campo do plugin. #}
+{% set field_order = item.getFormFields()|filter(f => f not in ['users_id', 'locations_id']) %}
+
 {% block more_fields %}
    {{ fields.textField('placa', item.fields['placa'], 'Placa', {required: true}) }}
 

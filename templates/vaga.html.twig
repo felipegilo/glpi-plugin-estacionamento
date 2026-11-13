@@ -1,6 +1,10 @@
 {% extends "generic_show_form.html.twig" %}
 {% import 'components/form/fields_macros.html.twig' as fields %}
 
+{# O formulario generico do GLPI ja desenharia "Localizacao" e "Usuario" (mesmos nomes de campo que os abaixo).
+   Eles sao omitidos aqui para nao aparecerem repetidos: valem so os campos do plugin. #}
+{% set field_order = item.getFormFields()|filter(f => f not in ['users_id', 'locations_id']) %}
+
 {% block more_fields %}
    {{ fields.dropdownArrayField('tipo', item.fields['tipo'] ?? 1, tipos, 'Tipo') }}
 
