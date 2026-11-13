@@ -1,0 +1,17 @@
+{% extends "generic_show_form.html.twig" %}
+{% import 'components/form/fields_macros.html.twig' as fields %}
+
+{% block more_fields %}
+   {{ fields.dropdownArrayField('tipo', item.fields['tipo'] ?? 1, tipos, 'Tipo') }}
+
+   {{ fields.dropdownArrayField('status', item.fields['status'] ?? 1, statuses, 'Status') }}
+
+   {{ fields.dropdownField('Location', 'locations_id', item.fields['locations_id'], 'Location'|itemtype_name, {
+      'entity': item.fields['entities_id'],
+   }) }}
+
+   {{ fields.dropdownField('User', 'users_id', item.fields['users_id'], 'Usuário atribuído', {
+      'entity': item.fields['entities_id'],
+      'right': 'all',
+   }) }}
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends "generic_show_form.html.twig" %}
+{% import 'components/form/fields_macros.html.twig' as fields %}
+
+{% block more_fields %}
+   {{ fields.textField('placa', item.fields['placa'], 'Placa', {required: true}) }}
+
+   {{ fields.textField('chassi', item.fields['chassi'], 'Chassi') }}
+
+   {{ fields.textField('modelo', item.fields['modelo'], 'Modelo') }}
+
+   {{ fields.textField('cor', item.fields['cor'], 'Cor') }}
+
+   {{ fields.dropdownArrayField('tipo', item.fields['tipo'] ?? 1, tipos, 'Tipo') }}
+
+   {{ fields.dropdownField('User', 'users_id', item.fields['users_id'], 'Proprietário', {
+      'entity': item.fields['entities_id'],
+      'right': 'all',
+   }) }}
+
+   {{ fields.dropdownField('GlpiPlugin\\Estacionamento\\Vaga', 'plugin_estacionamento_vagas_id', item.fields['plugin_estacionamento_vagas_id'], 'Vaga', {
+      'entity': item.fields['entities_id'],
+      'condition': {
+         'OR': {
+            'glpi_plugin_estacionamento_vagas.status': 1,
+            'glpi_plugin_estacionamento_vagas.id': item.fields['plugin_estacionamento_vagas_id'] ?: 0,
+         },
+      },
+   }) }}
+{% endblock %}
